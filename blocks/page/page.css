@@ -1,0 +1,10 @@
+.body {
+  background-color: black;
+  font-family: 'Inter', 'Arial', sans-serif;
+  color: white;
+}
+
+.page {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+}

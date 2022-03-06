@@ -1,0 +1,12 @@
+.gallery__title {
+  display: block;
+  margin: 0;
+  color: black;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

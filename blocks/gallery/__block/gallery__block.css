@@ -1,0 +1,6 @@
+.gallery__block {
+  display: flex;
+  align-items: center;
+  margin: 22px 20px 0 22px;
+  justify-content: space-between;
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+</head>
+<body class="body">
+ <div class="page">
+   <header class="header page__container">
+    <img src="./images/__logo.svg" alt="Логотип компании" class="logo">
+   </header>
+
+   <main class="content page__container">
+    <section class="profile">
+      <img src="./images/avatar.jpg" alt="аватарка пользователя" class="profile__avatar">
+      <div class="profile-info">
+        <h1 class="profile-info__title">Жак-Ив Кусто</h1>
+        <button class="profile__button-edit"></button>
+        <p class="profile-info__description">Исследователь океана</p>
+      </div>
+      <button class="button"></button>
+    </section>
+
+    <section class="gallery page__container">
+      <ul class="gallery__items">
+        <li class="gallery__item"><img src="./images/castle.jpg" alt="фотография замок" class="gallery__images">
+          <div class="gallery__block">
+            <h2 class="gallery__title">Карачаевск</h2>
+            <img src="./images/like.svg" alt="" class="gallery__icon">
+          </div>
+        </li>
+
+        <li class="gallery__item"><img src="./images/mount.jpg" alt="горы" class="gallery__images">
+          <div class="gallery__block">
+            <h2 class="gallery__title">Гора Эльбрус</h2>
+            <img src="./images/like.svg" alt="" class="gallery__icon">
+          </div>
+        </li>
+
+        <li class="gallery__item"><img src="./images/mountDombai.jpg" alt="горы" class="gallery__images">
+          <div class="gallery__block">
+            <h2 class="gallery__title">Домбай</h2>
+            <img src="./images/like.svg" alt="" class="gallery__icon">
+          </div>
+        </li>
+
+        <li class="gallery__item"><img src="./images/mount.jpg" alt="горы" class="gallery__images">
+          <div class="gallery__block">
+            <h2 class="gallery__title">Гора Эльбрус</h2>
+            <img src="./images/like.svg" alt="" class="gallery__icon">
+          </div>
+        </li>
+
+        <li class="gallery__item"><img src="./images/mountDombai.jpg" alt="горы" class="gallery__images">
+          <div class="gallery__block">
+            <h2 class="gallery__title">Домбай</h2>
+            <img src="./images/like.svg" alt="" class="gallery__icon">
+          </div>
+        </li>
+
+        <li class="gallery__item"><img src="./images/castle.jpg" alt="фотография замок" class="gallery__images">
+          <div class="gallery__block">
+            <h2 class="gallery__title">Карачаево-Черкесск</h2>
+            <img src="./images/like.svg" alt="" class="gallery__icon">
+          </div>
+        </li>
+      </ul>
+
+    </section>
+
+
+
+   </main>
+
+
+  <footer class="footer page__container">
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+
+
+  </footer>
+
+ </div>
+
+
+ <div class="popup">
+   <div class="popup__container page__container">
+     <button type="submit" class="popup__close"></button>
+     <h2 class="popup__title">Редактировать профиль</h2>
+     <form action="" class="form">
+       <input type="text" class="form__field"  value="Жак-Ив Кусто" id="name">
+       <input type="text" class="form__field" value="Исследователь океана" id="description">
+       <button type="submit" class="form__button">Сохранить</button>
+     </form>
+   </div>
+ </div>
+
+ <script src="./scripts/main.js"></script>
+</body>
+</html>
