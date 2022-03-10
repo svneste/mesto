@@ -7,4 +7,12 @@
   border: 1px solid white;
   border-radius: 2px;
   background-position: 50% 50%;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  cursor: pointer;
+  box-sizing: border-box;
+  align-self: center;
+  margin-top: 8px;
 }

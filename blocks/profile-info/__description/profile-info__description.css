@@ -1,3 +1,4 @@
+/*
 .profile-info__description {
   margin: 0;
   margin-top: 16px;
@@ -5,4 +6,18 @@
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
+}*/
+
+
+.profile-info__description {
+  margin: 0;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  max-width: 336px;
 }
