@@ -1,4 +1,20 @@
-/*.profile-info {
-  display: flex;
-  flex-wrap: wrap;
-}*/
+.profile-info {
+  max-width: 40%;
+  display: grid;
+  grid-template-columns: 1fr 24px;
+  column-gap: 17px;
+  row-gap: 16px;
+}
+
+@media screen and (max-width: 1023px) {
+  .profile-info {
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .profile-info {
+    max-width: 80%;
+    row-gap: 14px;
+  }
+}

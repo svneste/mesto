@@ -1,16 +1,25 @@
 .button {
-  padding: 0;
+  margin-left: auto;
   min-width: 150px;
   height: 50px;
   background-color: black;
   border: 1px solid white;
-  margin-left: auto;
   background-image: url('../../images/icon.svg');
   background-repeat: no-repeat;
   background-position: center;
-  grid-row-start: 1;
-  grid-row-end: 3;
-  grid-column-start: 4;
-  grid-column-end: 5;
-  align-self: center;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1023px) {
+  .button {
+    margin: 0 auto;
+    min-width: 333px;
+    margin-top: 36px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .button {
+    min-width: 282px;
+  }
 }

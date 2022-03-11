@@ -1,15 +1,15 @@
-.gallery {
+.logo {
+
 }
 
 @media screen and (max-width: 925px) {
-  .gallery {
+  .logo {
     margin-left: 40px;
-    margin-right: 40px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .gallery {
-    margin: 0;
+  .logo {
+    margin-left: 27px;
   }
 }

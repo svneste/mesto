@@ -6,4 +6,6 @@
   grid-template-rows: repeat(2, minmax(361px, 1fr));
   gap: 20px 17px;
   list-style: none;
+  grid-auto-rows: 361px;
 }
+
