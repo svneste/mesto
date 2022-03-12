@@ -1,4 +1,4 @@
-.profile-info__title {
+.profile__title {
   margin: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -9,13 +9,13 @@
 }
 
 @media screen and (max-width: 1023px) {
-  .profile-info__title {
+  .profile__title {
     max-width: 294px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .profile-info__title {
+  .profile__title {
     font-style: normal;
     font-weight: 500;
     font-size: 27px;

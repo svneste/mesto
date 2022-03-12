@@ -1,4 +1,4 @@
-.profile-info {
+.profile__info {
   max-width: 40%;
   display: grid;
   grid-template-columns: 1fr 24px;
@@ -7,13 +7,13 @@
 }
 
 @media screen and (max-width: 1023px) {
-  .profile-info {
+  .profile__info {
     max-width: 80%;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .profile-info {
+  .profile__info {
     max-width: 80%;
     row-gap: 14px;
   }
