@@ -8,5 +8,19 @@
   right: -40px;
   top: -40px;
   background-color: transparent;
+  cursor: pointer;
+  transition: opacity 0.6s ease;
+}
 
+.popup__close:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 767px) {
+  .popup__close {
+    right: 0;
+    height: 25px;
+    width: 25px;
+    background-size: cover;
+  }
 }

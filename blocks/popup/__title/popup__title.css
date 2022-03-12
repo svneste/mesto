@@ -2,3 +2,13 @@
   margin: 0;
   margin-bottom: 40px;
 }
+
+@media screen and (max-width: 767px) {
+  .popup__title {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 46px;
+  }
+}
