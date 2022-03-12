@@ -10,11 +10,5 @@
 }
 
 .form__button:hover {
-  opacity: 0.8;;
-}
-
-@media screen and (max-width: 767px) {
-  .form__button {
-
-  }
+  opacity: 0.8;
 }
