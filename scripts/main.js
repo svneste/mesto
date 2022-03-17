@@ -30,8 +30,8 @@ popup.addEventListener('click', function (event) {
 })
 
 openPopup.addEventListener('click', function () {
-  nameInput.value = profileTitle.innerHTML;
-  jobInput.value = profileJob.innerHTML;
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileJob.textContent;
   togglePopup();
 });
 
