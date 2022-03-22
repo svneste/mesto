@@ -1,7 +1,32 @@
 const popup = document.querySelector('.popup');
 const openPopup = document.querySelector('.profile__button-edit');
 const closePopup = popup.querySelector('.popup__close');
-
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 let formElement = document.querySelector('.form');
 let nameInput = formElement.querySelector('#name');
 let jobInput = formElement.querySelector('#description');
@@ -35,4 +60,17 @@ openPopup.addEventListener('click', function () {
   togglePopup();
 });
 
+const gallery = document.querySelector('.gallery__items');
 
+
+
+function renderItems(items) {
+  const item = document.querySelector('.gallery-template').content.firstElementChild.cloneNode(true);
+
+  item.querySelector('.gallery__title').textContent = items.name;
+  item.querySelector('.gallery__images').src = items.link;
+
+  gallery.append(item);
+}
+
+initialCards.map(renderItems);
