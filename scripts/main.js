@@ -1,4 +1,4 @@
-const popup = document.querySelector('.popup');
+const popup = document.querySelector('.popup-edit');
 const openPopup = document.querySelector('.profile__button-edit');
 const closePopup = popup.querySelector('.popup__close');
 const initialCards = [
@@ -27,6 +27,11 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+const popupAdd = document.querySelector('.popup-add');
+const openPopupAdd = document.querySelector('.profile__button-add');
+const popupAddClose = document.querySelector('.popupAdd__close');
+
 let formElement = document.querySelector('.form');
 let nameInput = formElement.querySelector('#name');
 let jobInput = formElement.querySelector('#description');
@@ -34,33 +39,53 @@ let jobInput = formElement.querySelector('#description');
 let profileTitle = document.querySelector('.profile__title');
 let profileJob = document.querySelector('.profile__description');
 
-function togglePopup() {
-  popup.classList.toggle('popup_opened');
+const CardTitle = document.querySelector('#input-title');
+const CardLink = document.querySelector('#input-link');
+const formButtonAdd = document.querySelector('.formAdd__button');
+
+const likeButton = document.querySelector('.gallery__like-button');
+
+
+
+function open (popupName) {
+  popupName.classList.add('popup_opened');
 }
+
+function close (popupName) {
+  popupName.classList.remove('popup_opened');
+}
+
+openPopup.addEventListener('click', () => open(popup));
+openPopupAdd.addEventListener('click', () => open(popupAdd));
+
+closePopup.addEventListener('click', () => close(popup));
+popupAddClose.addEventListener('click', () => close(popupAdd));
+
 
 function formSubmitHandler (evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  togglePopup();
+  close(popup);
 }
 
-closePopup.addEventListener('click', togglePopup);
+
 formElement.addEventListener('submit', formSubmitHandler);
 
 popup.addEventListener('click', function (event) {
   if (event.target === event.currentTarget) {
-    togglePopup();
+    close(popup);
   }
 })
 
 openPopup.addEventListener('click', function () {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileJob.textContent;
-  togglePopup();
+  open(popup);
 });
 
 const gallery = document.querySelector('.gallery__items');
+
 
 
 
@@ -74,3 +99,33 @@ function renderItems(items) {
 }
 
 initialCards.map(renderItems);
+
+
+function createCard(card) {
+  console.log('Запустилась функция createCard');
+  console.log(card.name);
+  const item = document.querySelector('.gallery-template').content.firstElementChild.cloneNode(true);
+  item.querySelector('.gallery__title').textContent = card.name;
+  item.querySelector('.gallery__images').src = card.link;
+  gallery.prepend(item);
+}
+
+function addCard(evt) {
+  evt.preventDefault();
+  console.log('Функция отработала');
+  const newCard = {};
+  newCard.name = CardTitle.value;
+  newCard.link = CardLink.value;
+  createCard(newCard);
+  console.log(newCard);
+
+}
+
+formButtonAdd.addEventListener('click', addCard);
+
+
+/*
+likeButton.addEventListener('click', function () {
+  console.log('Нажали на лайк');
+}) */
+
