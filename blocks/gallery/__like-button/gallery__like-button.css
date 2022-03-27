@@ -1,4 +1,9 @@
 .gallery__like-button {
+  background: url('../../../images/like.svg') center no-repeat;
+  background-size: 100%;
+  border: none;
+  height: 22px;
+  width: 19px;
   cursor: pointer;
   transition: opacity 0.6s ease;
   border: 0;

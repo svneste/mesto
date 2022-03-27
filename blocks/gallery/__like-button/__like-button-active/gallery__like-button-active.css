@@ -1,0 +1,8 @@
+.gallery__like-button-active {
+  background: url('../../../../images/like_active.svg') center no-repeat;
+  opacity: 1;
+  background-size: 100%;
+  border: none;
+  height: 22px;
+  width: 19px;
+}

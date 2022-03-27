@@ -1,0 +1,15 @@
+.gallery__crash-button {
+  background: url('../../../images/trash.svg');
+  height: 18px;
+  width: 19px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.6s ease;
+}
+
+.gallery__crash-button:hover {
+  opacity: 0.7;
+}

@@ -42,6 +42,7 @@ let profileJob = document.querySelector('.profile__description');
 const CardTitle = document.querySelector('#input-title');
 const CardLink = document.querySelector('#input-link');
 const formButtonAdd = document.querySelector('.formAdd__button');
+const galleryBlock = document.querySelector('.gallery__block');
 
 const likeButton = document.querySelector('.gallery__like-button');
 
@@ -95,6 +96,8 @@ function renderItems(items) {
   item.querySelector('.gallery__title').textContent = items.name;
   item.querySelector('.gallery__images').src = items.link;
 
+  setActions(item);
+
   gallery.append(item);
 }
 
@@ -107,6 +110,7 @@ function createCard(card) {
   const item = document.querySelector('.gallery-template').content.firstElementChild.cloneNode(true);
   item.querySelector('.gallery__title').textContent = card.name;
   item.querySelector('.gallery__images').src = card.link;
+  setActions(item);
   gallery.prepend(item);
 }
 
@@ -124,8 +128,17 @@ function addCard(evt) {
 formButtonAdd.addEventListener('click', addCard);
 
 
-/*
-likeButton.addEventListener('click', function () {
-  console.log('Нажали на лайк');
-}) */
+function like(event) {
+  const todo = event.currentTarget.closest('.gallery__like-button');
+  todo.classList.toggle('gallery__like-button-active');
+}
 
+function setActions(todo) {
+  todo.querySelector('.gallery__like-button').addEventListener('click', like);
+  todo.querySelector('.gallery__crash-button').addEventListener('click', removeCard);
+}
+
+function removeCard(event) {
+  const card = event.currentTarget.closest('.gallery__item');
+  card.remove();
+}
