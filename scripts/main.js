@@ -46,7 +46,8 @@ const galleryBlock = document.querySelector('.gallery__block');
 
 const likeButton = document.querySelector('.gallery__like-button');
 
-
+const popupImage = document.querySelector('.popup_image');
+const popupImageClose = document.querySelector('.popup_image__close');
 
 function open (popupName) {
   popupName.classList.add('popup_opened');
@@ -62,6 +63,7 @@ openPopupAdd.addEventListener('click', () => open(popupAdd));
 closePopup.addEventListener('click', () => close(popup));
 popupAddClose.addEventListener('click', () => close(popupAdd));
 
+popupImageClose.addEventListener('click', () => close(popupImage));
 
 function formSubmitHandler (evt) {
   evt.preventDefault();
@@ -136,9 +138,17 @@ function like(event) {
 function setActions(todo) {
   todo.querySelector('.gallery__like-button').addEventListener('click', like);
   todo.querySelector('.gallery__crash-button').addEventListener('click', removeCard);
+  todo.querySelector('.gallery__images').addEventListener('click', openImg);
 }
 
 function removeCard(event) {
   const card = event.currentTarget.closest('.gallery__item');
   card.remove();
+}
+
+function openImg(card) {
+  const img = event.currentTarget.closest('.gallery__images');
+  card.
+  console.log(img);
+  popupImage.classList.add('popup_opened');
 }
