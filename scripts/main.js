@@ -97,6 +97,8 @@ function renderItems (items) {
   const item = document.querySelector('.gallery-template').content.firstElementChild.cloneNode(true);
   item.querySelector('.gallery__title').textContent = items.name;
   item.querySelector('.gallery__images').src = items.link;
+  item.querySelector('.gallery__images').alt = items.name;
+
   setActions(item);
   gallery.prepend(item);
   closePopup(popupAddCards);
