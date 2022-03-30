@@ -52,39 +52,41 @@ function openPopup (popupName) {
 function closePopup (popupName) {
   popupName.classList.remove('popup__opened');
 }
-
-function closePopupContainer (popupName) {
+/*
+function closePopupContainer (popupName, event) {
   if (event.target === event.currentTarget) {
 
     closePopup(popupName);
   }
-}
+}*/
 
-function formSubmitHandler (event) {
+function handleProfileFormSubmit (event) {
   event.preventDefault();
   profileTitle.textContent = inputName.value;
   profileJob.textContent = inputJob.value;
   closePopup(popupContainer);
 }
 
-function inputGetValue () {
+function setInputValues () {
+    openPopup(popupEditProfile);
     inputName.value =  profileTitle.textContent;
     inputJob.value = profileJob.textContent;
 }
 
-buttonEdit.addEventListener('click', () => openPopup(popupEditProfile));
-buttonEdit.addEventListener('click', inputGetValue);
+buttonEdit.addEventListener('click', setInputValues);
 buttonOpenPopupAdd.addEventListener('click', () => openPopup(popupAddCards));
-profileForm.addEventListener('submit', formSubmitHandler);
+profileForm.addEventListener('submit', handleProfileFormSubmit);
 
-closeButtons.forEach(function(item) {
-  item.addEventListener('click', () => closePopup(item.closest('.popup')));
-});
-
-popups.forEach(function(item) {
-  item.addEventListener('click', () => closePopupContainer(item));
-});
-
+popups.forEach((popup) => {
+    popup.addEventListener('mousedown', (evt) => {
+        if (evt.target.classList.contains('popup__opened')) {
+            closePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close')) {
+          closePopup(popup)
+        }
+    })
+})
 
 popupAddCards.addEventListener('submit', createNewCard);
 
