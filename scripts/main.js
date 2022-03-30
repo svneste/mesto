@@ -58,9 +58,10 @@ function closePopup (popupName) {
   popupName.classList.remove('popup_opened');
 }
 
-function closePopupContainer (event) {
+function closePopupContainer (popupName) {
   if (event.target === event.currentTarget) {
-    closePopup(popupContainer);
+
+    closePopup(popupName);
   }
 }
 
@@ -84,9 +85,11 @@ formContainer.addEventListener('submit', formSubmitHandler);
 buttonCloseAllPopup.forEach(function(item) {
   item.addEventListener('click', () => closePopup(item.closest('.popup')));
 });
+/*popupContainer.addEventListener('click', closePopupContainer);*/
 popupContainerAll.forEach(function(item) {
-  item.addEventListener('click', () => closePopupContainer(item.closest('.popup')));
+  item.addEventListener('click', () => closePopupContainer(item));
 });
+
 
 popupAddCards.addEventListener('submit', createNewCard);
 
@@ -96,7 +99,7 @@ function renderItems (items) {
   item.querySelector('.gallery__images').src = items.link;
   setActions(item);
   gallery.prepend(item);
-
+  closePopup(popupAddCards);
 }
 
 initialCards.map(renderItems);
@@ -109,7 +112,7 @@ function createNewCard (event) {
   res.link = inputLinkCard.value;
 
   renderItems(res);
-  closePopup(popupAddCards);
+
 }
 
 function addLike (event) {
