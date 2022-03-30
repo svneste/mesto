@@ -5,4 +5,5 @@
   object-fit: cover;
   background-size: 50%, contain;
   background-position: 50%;
+  cursor: pointer;
 }
