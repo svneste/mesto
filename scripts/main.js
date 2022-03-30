@@ -1,4 +1,3 @@
-const popupContainer = document.querySelector('.popup');
 const popupEditProfile = document.querySelector('.popup-edit');
 const profileForm = document.querySelector('.form');
 const popupAddCards = document.querySelector('.popup-add');
@@ -52,13 +51,6 @@ function openPopup (popupName) {
 function closePopup (popupName) {
   popupName.classList.remove('popup__opened');
 }
-/*
-function closePopupContainer (popupName, event) {
-  if (event.target === event.currentTarget) {
-
-    closePopup(popupName);
-  }
-}*/
 
 function handleProfileFormSubmit (event) {
   event.preventDefault();
@@ -90,33 +82,37 @@ popups.forEach((popup) => {
 
 popupAddCards.addEventListener('submit', createNewCard);
 
-function renderItems (items) {
-  const item = document.querySelector('.gallery-template').content.firstElementChild.cloneNode(true);
-  item.querySelector('.gallery__title').textContent = items.name;
-  item.querySelector('.gallery__images').src = items.link;
-  item.querySelector('.gallery__images').alt = items.name;
-
-  setActions(item);
+function renderItems (data) {
+  const item = createCard(data);
   gallery.prepend(item);
-  closePopup(popupAddCards);
+}
+
+function createCard(item) {
+  /*const imagesGallery = cardElement.querySelector('.gallery__images');*/
+  const cardElement = document.querySelector('.gallery-template').content.firstElementChild.cloneNode(true);
+  cardElement.querySelector('.gallery__title').textContent = item.name;
+  cardElement.querySelector('.gallery__images').src = item.link;
+  cardElement.querySelector('.gallery__images').alt = item.name;
+  setCardListeners(cardElement);
+  return cardElement;
 }
 
 initialCards.map(renderItems);
 
 function createNewCard (event) {
   event.preventDefault();
-  let res = {};
+  const res = {};
 
   res.name = inputTitleCard.value;
   res.link = inputLinkCard.value;
-
+  closePopup(popupAddCards);
   renderItems(res);
-
+  inputTitleCard.value = '';
+  inputLinkCard.value = '';
 }
 
-function addLike (event) {
-  const likeButton = event.currentTarget.closest('.gallery__like-button');
-  likeButton.classList.toggle('gallery__like-button-active');
+function toggleLike (event) {
+  event.currentTarget.classList.toggle('gallery__like-button-active');
 }
 
 function removeCard (event) {
@@ -125,18 +121,14 @@ function removeCard (event) {
 }
 
 function openImages (event) {
-  const images  = event.currentTarget.closest('.gallery__images');
-
-  const title = images.closest('.gallery__item').querySelector('.gallery__title');
-
-  popupImagesItem.src = images.src;
-  popupImagesLabel.textContent = title.textContent;
-
+  popupImagesItem.src = event.currentTarget.src;
+  popupImagesItem.alt = event.currentTarget.alt;
+  popupImagesLabel.textContent = event.currentTarget.alt;
   openPopup(popupImages);
 }
 
-function setActions(card) {
-  card.querySelector('.gallery__like-button').addEventListener('click', addLike);
+function setCardListeners(card) {
+  card.querySelector('.gallery__like-button').addEventListener('click', toggleLike);
   card.querySelector('.gallery__crash-button').addEventListener('click', removeCard);
   card.querySelector('.gallery__images').addEventListener('click', openImages);
 }
