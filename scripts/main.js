@@ -85,7 +85,7 @@ formContainer.addEventListener('submit', formSubmitHandler);
 buttonCloseAllPopup.forEach(function(item) {
   item.addEventListener('click', () => closePopup(item.closest('.popup')));
 });
-/*popupContainer.addEventListener('click', closePopupContainer);*/
+
 popupContainerAll.forEach(function(item) {
   item.addEventListener('click', () => closePopupContainer(item));
 });
