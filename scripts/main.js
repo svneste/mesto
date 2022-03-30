@@ -1,6 +1,6 @@
 const popupContainer = document.querySelector('.popup');
 const popupEditProfile = document.querySelector('.popup-edit');
-const formContainer = document.querySelector('.form');
+const profileForm = document.querySelector('.form');
 const popupAddCards = document.querySelector('.popup-add');
 const buttonEdit = document.querySelector('.profile__button-edit');
 const buttonOpenPopupAdd = document.querySelector('.profile__button-add');
@@ -33,12 +33,12 @@ const initialCards = [
   }
 ];
 const gallery = document.querySelector('.gallery__items');
-let profileTitle = document.querySelector('.profile__title');
-let profileJob = document.querySelector('.profile__description');
-const buttonCloseAllPopup = document.querySelectorAll('.popup__close');
-const popupContainerAll = document.querySelectorAll('.popup');
-let inputTitleCard = document.querySelector('#input-title');
-let inputLinkCard = document.querySelector('#input-link');
+const profileTitle = document.querySelector('.profile__title');
+const profileJob = document.querySelector('.profile__description');
+const closeButtons = document.querySelectorAll('.popup__close');
+const popups = document.querySelectorAll('.popup');
+const inputTitleCard = document.querySelector('#input-title');
+const inputLinkCard = document.querySelector('#input-link');
 const galleryImg = document.querySelector('.gallery__images');
 const popupImages = document.querySelector('.popup-image');
 const popupImagesItem = document.querySelector('.popup__img');
@@ -75,13 +75,13 @@ function inputGetValue () {
 buttonEdit.addEventListener('click', () => openPopup(popupEditProfile));
 buttonEdit.addEventListener('click', inputGetValue);
 buttonOpenPopupAdd.addEventListener('click', () => openPopup(popupAddCards));
-formContainer.addEventListener('submit', formSubmitHandler);
+profileForm.addEventListener('submit', formSubmitHandler);
 
-buttonCloseAllPopup.forEach(function(item) {
+closeButtons.forEach(function(item) {
   item.addEventListener('click', () => closePopup(item.closest('.popup')));
 });
 
-popupContainerAll.forEach(function(item) {
+popups.forEach(function(item) {
   item.addEventListener('click', () => closePopupContainer(item));
 });
 
