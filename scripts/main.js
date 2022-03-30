@@ -109,6 +109,7 @@ function createNewCard (event) {
   res.link = inputLinkCard.value;
 
   renderItems(res);
+  closePopup(popupAddCards);
 }
 
 function addLike (event) {
