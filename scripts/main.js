@@ -51,11 +51,11 @@ const popupImagesLabel = document.querySelector('.popup__label');
 const galleryImagesTitle = document.querySelector('.gallery__title');
 
 function openPopup (popupName) {
-  popupName.classList.add('popup_opened');
+  popupName.classList.add('popup__opened');
 }
 
 function closePopup (popupName) {
-  popupName.classList.remove('popup_opened');
+  popupName.classList.remove('popup__opened');
 }
 
 function closePopupContainer (popupName) {
