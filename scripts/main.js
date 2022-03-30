@@ -88,11 +88,11 @@ function renderItems (data) {
 }
 
 function createCard(item) {
-  /*const imagesGallery = cardElement.querySelector('.gallery__images');*/
   const cardElement = document.querySelector('.gallery-template').content.firstElementChild.cloneNode(true);
+  const imagesGallery = cardElement.querySelector('.gallery__images');
   cardElement.querySelector('.gallery__title').textContent = item.name;
-  cardElement.querySelector('.gallery__images').src = item.link;
-  cardElement.querySelector('.gallery__images').alt = item.name;
+  imagesGallery.src = item.link;
+  imagesGallery.alt = item.name;
   setCardListeners(cardElement);
   return cardElement;
 }
