@@ -56,7 +56,7 @@ function handleProfileFormSubmit (event) {
   event.preventDefault();
   profileTitle.textContent = inputName.value;
   profileJob.textContent = inputJob.value;
-  closePopup(popupContainer);
+  closePopup(popupEditProfile);
 }
 
 function setInputValues () {
