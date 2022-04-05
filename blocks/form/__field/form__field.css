@@ -13,3 +13,7 @@
 .form__field:last-of-type {
   padding-top: 26px;
 }
+
+.form__field:invalid {
+  border-bottom: 1px solid red;
+}

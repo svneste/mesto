@@ -46,9 +46,11 @@ const galleryImagesTitle = document.querySelector('.gallery__title');
 
 function openPopup (popupName) {
   popupName.classList.add('popup__opened');
+  document.addEventListener('keydown', handleEscUp);
 }
 
 function closePopup (popupName) {
+  document.removeEventListener('keydown', handleEscUp);
   popupName.classList.remove('popup__opened');
 }
 
@@ -65,9 +67,20 @@ function setInputValues () {
     inputJob.value = profileJob.textContent;
 }
 
+const handleEscUp = (evt) => {
+
+  if (evt.key === 'Escape') {
+    const activePopup = document.querySelector('.popup__opened');
+    closePopup (activePopup);
+  }
+}
+
 buttonEdit.addEventListener('click', setInputValues);
 buttonOpenPopupAdd.addEventListener('click', () => openPopup(popupAddCards));
 profileForm.addEventListener('submit', handleProfileFormSubmit);
+
+
+
 
 popups.forEach((popup) => {
     popup.addEventListener('mousedown', (evt) => {
