@@ -62,9 +62,9 @@ function handleProfileFormSubmit (event) {
 }
 
 function setInputValues () {
-    openPopup(popupEditProfile);
     inputName.value =  profileTitle.textContent;
     inputJob.value = profileJob.textContent;
+    openPopup(popupEditProfile);
 }
 
 const handleEscUp = (evt) => {
