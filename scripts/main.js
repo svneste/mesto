@@ -43,6 +43,9 @@ const popupImages = document.querySelector('.popup-image');
 const popupImagesItem = document.querySelector('.popup__img');
 const popupImagesLabel = document.querySelector('.popup__label');
 const galleryImagesTitle = document.querySelector('.gallery__title');
+const formAddCard = document.querySelector('.form[name="form-add"]');
+const galleryTemplate = document.querySelector('.gallery-template').content.querySelector('.gallery__item');
+const formButtonAdd = document.querySelector('.form__button[aria-label="saveCard"]');
 
 function openPopup (popupName) {
   popupName.classList.add('popup__opened');
@@ -79,21 +82,16 @@ buttonEdit.addEventListener('click', setInputValues);
 buttonOpenPopupAdd.addEventListener('click', () => openPopup(popupAddCards));
 profileForm.addEventListener('submit', handleProfileFormSubmit);
 
-
-
-
 popups.forEach((popup) => {
     popup.addEventListener('mousedown', (evt) => {
-        if (evt.target.classList.contains('popup__opened')) {
+        if (evt.target.classList.contains('popup__opened') || evt.target.classList.contains('popup__close')) {
             closePopup(popup)
-        }
-        if (evt.target.classList.contains('popup__close')) {
-          closePopup(popup)
         }
     })
 })
 
-popupAddCards.addEventListener('submit', createNewCard);
+formAddCard.addEventListener('submit', createNewCard);
+
 
 function renderItems (data) {
   const item = createCard(data);
@@ -101,7 +99,7 @@ function renderItems (data) {
 }
 
 function createCard(item) {
-  const cardElement = document.querySelector('.gallery-template').content.firstElementChild.cloneNode(true);
+  const cardElement = galleryTemplate.cloneNode(true);
   const imagesGallery = cardElement.querySelector('.gallery__images');
   cardElement.querySelector('.gallery__title').textContent = item.name;
   imagesGallery.src = item.link;
@@ -122,6 +120,8 @@ function createNewCard (event) {
   renderItems(res);
   inputTitleCard.value = '';
   inputLinkCard.value = '';
+  formButtonAdd.classList.add('form__button-invalid');
+  formButtonAdd.disabled = true;
 }
 
 function toggleLike (event) {
@@ -137,11 +137,14 @@ function openImages (event) {
   popupImagesItem.src = event.currentTarget.src;
   popupImagesItem.alt = event.currentTarget.alt;
   popupImagesLabel.textContent = event.currentTarget.alt;
+  popupImages.classList.add('popup__view');
   openPopup(popupImages);
 }
+
 
 function setCardListeners(card) {
   card.querySelector('.gallery__like-button').addEventListener('click', toggleLike);
   card.querySelector('.gallery__crash-button').addEventListener('click', removeCard);
   card.querySelector('.gallery__images').addEventListener('click', openImages);
 }
+

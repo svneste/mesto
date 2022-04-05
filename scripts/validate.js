@@ -23,21 +23,23 @@ function enableValidation (config) {
     });
   };
 
-  function showInputError (formElement, inputElement, errorMessage) {
+  function showInputError (formElement, inputElement, errorMessage, config) {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     errorElement.textContent = errorMessage;
+    inputElement.classList.add(config.inputErrorClass);
   }
 
-  function hideInputError (formElement, inputElement) {
+  function hideInputError (formElement, inputElement, config) {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     errorElement.textContent = '';
+    inputElement.classList.remove(config.inputErrorClass);
   }
 
   const isValid = (formElement, inputElement, config) => {
     if (!inputElement.validity.valid) {
-      showInputError(formElement, inputElement, inputElement.validationMessage);
+      showInputError(formElement, inputElement, inputElement.validationMessage, config);
     } else {
-      hideInputError(formElement, inputElement);
+      hideInputError(formElement, inputElement, config);
     }
   }
 
@@ -61,5 +63,6 @@ function enableValidation (config) {
     popupForm: '.form',
     inputSelector: '.form__field',
     submitButtonSelector: '.form__button',
-    buttonInvalid: 'form__button-invalid'
+    buttonInvalid: 'form__button-invalid',
+    inputErrorClass: 'form__input_type_error'
   });

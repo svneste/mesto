@@ -8,12 +8,9 @@
   padding-top: 13px;
   padding-bottom: 13px;
   font-size: 14px;
+  outline: none;
 }
 
 .form__field:last-of-type {
   padding-top: 26px;
-}
-
-.form__field:invalid {
-  border-bottom: 1px solid red;
 }

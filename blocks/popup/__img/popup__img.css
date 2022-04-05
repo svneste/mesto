@@ -6,12 +6,7 @@
 
 @media screen and (max-width: 767px) {
   .popup__img {
-    max-width: 400px;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .popup__img {
-    max-width: 240px;
+    max-height: 75vh;
+    max-width: 75vw;
   }
 }
