@@ -1,3 +1,6 @@
+import FormValidator from './FormValidator.js';
+import Card from './Card.js';
+
 const popupEditProfile = document.querySelector('.popup-edit');
 const profileForm = document.querySelector('.form');
 const popupAddCards = document.querySelector('.popup-add');
@@ -31,23 +34,32 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-const gallery = document.querySelector('.gallery__items');
+const formAddCard = document.querySelector('.form[name="form-add"]');
 const profileTitle = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__description');
-const closeButtons = document.querySelectorAll('.popup__close');
 const popups = document.querySelectorAll('.popup');
 const inputTitleCard = document.querySelector('#input-title');
 const inputLinkCard = document.querySelector('#input-link');
-const galleryImg = document.querySelector('.gallery__images');
 const popupImages = document.querySelector('.popup-image');
 const popupImagesItem = document.querySelector('.popup__img');
 const popupImagesLabel = document.querySelector('.popup__label');
-const galleryImagesTitle = document.querySelector('.gallery__title');
-const formAddCard = document.querySelector('.form[name="form-add"]');
-const galleryTemplate = document.querySelector('.gallery-template').content.querySelector('.gallery__item');
-const formButtonAdd = document.querySelector('.form__button[aria-label="saveCard"]');
+const formEdit = document.querySelector('.form-edit');
+const formAdd = document.querySelector('.form-add');
 
-function openPopup (popupName) {
+const config = {
+  inputSelector: '.form__field',
+  submitButtonSelector: '.form__button',
+  buttonInvalid: 'form__button-invalid',
+  inputErrorClass: 'form__input_type_error'
+};
+
+const validationPopupEdit = new FormValidator(config, formEdit);
+validationPopupEdit.enableValidation();
+
+const validationPopupAdd = new FormValidator(config, formAdd);
+validationPopupAdd.enableValidation();
+
+export function openPopup (popupName) {
   popupName.classList.add('popup__opened');
   document.addEventListener('keydown', handleEscUp);
 }
@@ -90,61 +102,27 @@ popups.forEach((popup) => {
     })
 })
 
+initialCards.forEach((item) => {
+  const card = new Card(item, '.gallery-template');
+  const cardElement = card.generateCard();
+
+  document.querySelector('.gallery__items').prepend(cardElement);
+})
+
 formAddCard.addEventListener('submit', createNewCard);
 
-
-function renderItems (data) {
-  const item = createCard(data);
-  gallery.prepend(item);
-}
-
-function createCard(item) {
-  const cardElement = galleryTemplate.cloneNode(true);
-  const imagesGallery = cardElement.querySelector('.gallery__images');
-  cardElement.querySelector('.gallery__title').textContent = item.name;
-  imagesGallery.src = item.link;
-  imagesGallery.alt = item.name;
-  setCardListeners(cardElement);
-  return cardElement;
-}
-
-initialCards.map(renderItems);
-
-function createNewCard (event) {
+function createNewCard(event) {
   event.preventDefault();
   const res = {};
 
   res.name = inputTitleCard.value;
   res.link = inputLinkCard.value;
+
+  const card = new Card(res, '.gallery-template');
+  const cardElement = card.generateCard();
+
+  document.querySelector('.gallery__items').prepend(cardElement);
   closePopup(popupAddCards);
-  renderItems(res);
-  inputTitleCard.value = '';
-  inputLinkCard.value = '';
-  formButtonAdd.classList.add('form__button-invalid');
-  formButtonAdd.disabled = true;
 }
 
-function toggleLike (event) {
-  event.currentTarget.classList.toggle('gallery__like-button-active');
-}
-
-function removeCard (event) {
-  const card = event.currentTarget.closest('.gallery__item');
-  card.remove();
-}
-
-function openImages (event) {
-  popupImagesItem.src = event.currentTarget.src;
-  popupImagesItem.alt = event.currentTarget.alt;
-  popupImagesLabel.textContent = event.currentTarget.alt;
-  popupImages.classList.add('popup__view');
-  openPopup(popupImages);
-}
-
-
-function setCardListeners(card) {
-  card.querySelector('.gallery__like-button').addEventListener('click', toggleLike);
-  card.querySelector('.gallery__crash-button').addEventListener('click', removeCard);
-  card.querySelector('.gallery__images').addEventListener('click', openImages);
-}
-
+export {popupImagesItem, popupImagesLabel, popupImages};
