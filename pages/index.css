@@ -39,6 +39,7 @@
 @import url(../blocks/form/__input-error/form__input-error.css);
 @import url(../blocks/form/__button/form__button-valid/form__button-valid.css);
 @import url(../blocks/form/__button/form__button-invalid/form__button-invalid.css);
-@import url(../blocks/popup/__view/popup__view.css);
+@import url(../blocks/popup-view/popup-view.css);
+
 
 
