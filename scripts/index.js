@@ -45,6 +45,7 @@ const popupImagesItem = document.querySelector('.popup__img');
 const popupImagesLabel = document.querySelector('.popup__label');
 const formEdit = document.querySelector('.form-edit');
 const formAdd = document.querySelector('.form-add');
+const galleryItem = document.querySelector('.gallery__items');
 
 const config = {
   inputSelector: '.form__field',
@@ -83,7 +84,6 @@ function setInputValues () {
 }
 
 const handleEscUp = (evt) => {
-
   if (evt.key === 'Escape') {
     const activePopup = document.querySelector('.popup__opened');
     closePopup (activePopup);
@@ -102,27 +102,29 @@ popups.forEach((popup) => {
     })
 })
 
-initialCards.forEach((item) => {
-  const card = new Card(item, '.gallery-template');
-  const cardElement = card.generateCard();
+const generateCard = (item) => new Card(item, '.gallery-template').generateCard();
 
-  document.querySelector('.gallery__items').prepend(cardElement);
-})
+function renderCards (items) {
+  items.forEach((item) => {
+
+    galleryItem.append(generateCard(item));
+  })
+}
+
+function createNewCard() {
+  const newCard = generateCard({
+    name: inputTitleCard.value,
+    link: inputLinkCard.value
+  }, '.gallery-template');
+
+  galleryItem.prepend(newCard);
+  closePopup(popupAddCards);
+  inputTitleCard.value = '';
+  inputLinkCard.value = '';
+}
+
 
 formAddCard.addEventListener('submit', createNewCard);
-
-function createNewCard(event) {
-  event.preventDefault();
-  const res = {};
-
-  res.name = inputTitleCard.value;
-  res.link = inputLinkCard.value;
-
-  const card = new Card(res, '.gallery-template');
-  const cardElement = card.generateCard();
-
-  document.querySelector('.gallery__items').prepend(cardElement);
-  closePopup(popupAddCards);
-}
+renderCards(initialCards);
 
 export {popupImagesItem, popupImagesLabel, popupImages};
