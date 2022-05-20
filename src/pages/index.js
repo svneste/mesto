@@ -6,6 +6,8 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 
+import '../pages/index.css';
+
 const buttonEdit = document.querySelector('.profile__button-edit');
 const buttonOpenPopupAdd = document.querySelector('.profile__button-add');
 const initialCards = [
