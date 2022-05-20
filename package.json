@@ -1,0 +1,19 @@
+{
+  "name": "yandex_practikum",
+  "version": "1.0.0",
+  "description": "Учебный проект на факультете веб-разработки в [Яндекс.Практикум](https://www.practikum.yandex.ru)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svneste/mesto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svneste/mesto/issues"
+  },
+  "homepage": "https://github.com/svneste/mesto#readme"
+}
