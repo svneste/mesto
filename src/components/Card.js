@@ -1,4 +1,3 @@
-import {popupImagesItem, popupImagesLabel, popupImages} from '../pages/index.js';
 
 export default class Card {
   constructor({data, handleCardClick}, cardSelector) {
@@ -49,10 +48,4 @@ export default class Card {
     this._element = null;
     }
 
-    _openImages = () => {
-      popupImagesItem.src = this._link;
-      popupImagesItem.alt = this._name;
-      popupImagesLabel.textContent = this._name;
-      openPopup(popupImages);
-    }
 }

@@ -3,7 +3,6 @@ import Popup from './Popup.js';
 export default class PopupWithForm extends Popup {
   constructor (popupSelector, handleFormSubmit) {
    super(popupSelector);
-   this._popup = document.querySelector(popupSelector);
    this._form = this._popup.querySelector('.form');
    this._inputs = this._form.querySelectorAll('.form__field');
    this._handleFormSubmit = handleFormSubmit;
@@ -31,7 +30,7 @@ export default class PopupWithForm extends Popup {
   }
 
   // при закрытии попапа форма должна сбрасываться
-  close = () => {
+  close() {
     super.close();
     this._form.reset();
   }

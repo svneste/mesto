@@ -13,6 +13,6 @@ export default class Section {
   }
 
   addItem(element) {
-    document.querySelector('.gallery__items').prepend(element);
+    this._container.prepend(element);
   }
 }
