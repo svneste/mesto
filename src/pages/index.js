@@ -39,20 +39,12 @@ const initialCards = [
   }
 ];
 
-const profileTitle = document.querySelector('.profile__title');
-const profileJob = document.querySelector('.profile__description');
-const popupImages = document.querySelector('.popup-image');
-const popupImagesItem = document.querySelector('.popup__img');
-const popupImagesLabel = document.querySelector('.popup__label');
 const formEdit = document.querySelector('.form-edit');
 const formAdd = document.querySelector('.form-add');
 const inputName = document.querySelector('#name');
 const inputJob = document.querySelector('#description');
 const userName = document.querySelector('.profile__title');
 const userJob = document.querySelector('.profile__description');
-const likePlace = document.querySelector('.gallery__like-count');
-const buttonRemoveCard = document.querySelector('.gallery__crash-button');
-const buttonDeleteCardSubbmit = document.querySelector('.form-button-delete');
 const userAvatar = document.querySelector('.profile__avatar');
 const formAvatar = document.querySelector('.form-avatar');
 
@@ -187,7 +179,6 @@ const avatarUserPopup = new PopupWithForm('.popup-avatar', (data) => {
   avatarUserPopup.loadingProcess(true);
   api.changeAvatarUser(data.link)
   .then(result => {
-    console.log(result.avatar);
     profile.setAvatarUser(result.avatar);
     avatarUserPopup.close();
   })
@@ -232,8 +223,6 @@ Promise.all([api.getUserInfo(), api.getAllCards()]).then(([ objUser, objCardList
     items: objCardList,
     renderer: (item) => {
       const cardItem = createCard(item);
-     // console.log(item);
-      console.log(cardItem._liked);
       cardListItems.addIconRemove();
       cardListItems.addItem(cardItem);
     }
@@ -245,9 +234,14 @@ Promise.all([api.getUserInfo(), api.getAllCards()]).then(([ objUser, objCardList
 
 const popupDeleteCard = new PopupRemoveCard('.popup-delete', (card) => {
   api.removeMyCard(card._id)
-  .then((result) => {
+  .then(() => {
     card._removeCard();
-    console.log(card);
   })
+  .catch((err) => {
+    console.log(err);
+  })
+  .finally(() => {
+    avatarUserPopup.loadingProcess(false);
+   })
 });
 
