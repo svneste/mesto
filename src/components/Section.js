@@ -15,4 +15,8 @@ export default class Section {
   addItem(element) {
     this._container.prepend(element);
   }
+
+  addIconRemove() {
+    this._iconPlace = this._container.querySelector('.gallery__crash-button');
+  }
 }

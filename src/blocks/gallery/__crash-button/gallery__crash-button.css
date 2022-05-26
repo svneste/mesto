@@ -1,4 +1,5 @@
 .gallery__crash-button {
+  visibility: hidden;
   background: url('../../../images/trash.svg');
   height: 18px;
   width: 19px;

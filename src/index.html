@@ -14,11 +14,16 @@
    <main class="content page__container">
 
     <section class="profile">
-      <img src="<%=require('./images/avatar.jpg')%>" alt="аватарка пользователя" class="profile__avatar">
+    <!--<div class="profile__avatar-block">-->
+      <!-- <img src="<%=require('./images/avatar.jpg')%>" alt="аватарка пользователя" class="profile__avatar"> -->
+      <!--<button class="profile__button-avatar"></button>-->
+    <!--</div>-->
+    <div class="profile__avatar"></div>
+
       <div class="profile__info">
-        <h1 class="profile__title">Жак-Ив Кусто</h1>
+        <h1 class="profile__title"></h1>
         <button class="profile__button-edit" type="button" aria-label="edit"></button>
-        <p class="profile__description">Исследователь океана</p>
+        <p class="profile__description"></p>
       </div>
       <button class="profile__button-add" type="button" aria-label="add"></button>
     </section>
@@ -71,11 +76,42 @@
    </figure>
  </div>
 
+ <!--Попап удаления карточки-->
+ <div class="popup popup-delete">
+  <div class="popup__container">
+    <button type="button" class="popup__close" aria-label="close"></button>
+    <h2 class="popup__title">Вы уверены?</h2>
+    <form class="form form-delete" name="edit-profile" novalidate>
+
+      <button type="submit" class="form__button form__button-delete" aria-label="deleteCard">Да</button>
+    </form>
+  </div>
+</div>
+
+<!--Попап смены аватар-->
+<div class="popup popup-avatar">
+  <div class="popup__container">
+    <button type="button" class="popup__close" aria-label="close"></button>
+    <h2 class="popup__title">Обновить аватар</h2>
+    <form class="form form-avatar" name="form-add" novalidate>
+
+      <input type="url" class="form__field" id="input-link" name="link" placeholder="Ссылка на картинку" required>
+      <span class="input-link-error form__input-error"></span>
+      <button type="submit" class="form__button form__button-invalid" aria-label="saveCard">Сохранить</button>
+    </form>
+  </div>
+</div>
+
+
+
  <template class="gallery-template">
    <li class="gallery__item"><img src="./images/castle.jpg" alt="фотография замок" class="gallery__images">
      <div class="gallery__block">
        <h2 class="gallery__title">Карачаевск</h2>
-       <button class="gallery__like-button" type="button"></button>
+       <div class="gallery__like-block">
+        <button class="gallery__like-button" type="button"></button>
+        <span class="gallery__like-count">1</span>
+      </div>
        <button class="gallery__crash-button" type="button"></button>
      </div>
    </li>

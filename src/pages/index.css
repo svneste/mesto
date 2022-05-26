@@ -40,6 +40,11 @@
 @import url(../blocks/form/__button/form__button-valid/form__button-valid.css);
 @import url(../blocks/form/__button/form__button-invalid/form__button-invalid.css);
 @import url(../blocks/popup-view/popup-view.css);
-
+@import url(../blocks/gallery/__like-count/gallery__like-count.css);
+@import url(../blocks/gallery/__like-block/gallery__like-block.css);
+@import url(../blocks/form/__button/form__button-delete/form__button-delete.css);
+@import url(../blocks/profile/__button-avatar/profile__button-avatar.css);
+@import url(../blocks/profile/__avatar-block/profile__avatar-block.css);
+@import url(../blocks/gallery/__crash-button-owner/gallery__crash-button-owner.css);
 
 

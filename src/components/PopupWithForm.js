@@ -6,6 +6,7 @@ export default class PopupWithForm extends Popup {
    this._form = this._popup.querySelector('.form');
    this._inputs = this._form.querySelectorAll('.form__field');
    this._handleFormSubmit = handleFormSubmit;
+   this._button = this._form.querySelector('.form__button');
   }
 
   // собирает данные всех полей формы
@@ -34,4 +35,14 @@ export default class PopupWithForm extends Popup {
     super.close();
     this._form.reset();
   }
+
+  //добавляем отображение ожидания загрузки данных
+  loadingProcess(isLoad) {
+    if (isLoad) {
+      this._button.innerText = 'Сохранение ...';
+    } else {
+      this._button.innerText = 'Сохранить'
+    }
+  }
+
 }

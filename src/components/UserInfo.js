@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor(selectorName, selectorJob) {
+  constructor(selectorName, selectorJob, userAvatar) {
     this._name = document.querySelector(selectorName);
     this._job = document.querySelector(selectorJob);
+    this._avatar = document.querySelector(userAvatar);
   }
 
   //возвращаем объект с данными пользователя
@@ -14,8 +15,13 @@ export default class UserInfo {
   }
 
   //принимает новые данные пользователя и добавляет их на страницу
-  setUserInfo(data) {
-    this._name.textContent = data.name;
-    this._job.textContent = data.description;
+  setUserInfo(name, about) {
+    this._name.textContent = name;
+    this._job.textContent = about;
+
+  }
+
+  setAvatarUser(avatarLink) {
+    this._avatar.style.backgroundImage  = `url('${avatarLink}')`;
   }
 }
