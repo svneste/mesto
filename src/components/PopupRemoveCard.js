@@ -12,19 +12,18 @@ export default class PopupRemoveCard extends Popup {
   open(card) {
     this._card = card;
     super.open();
-    this.setEventListeners();
+  //  this.setEventListeners();
   }
 
   _submitFormDelete = (evt) => {
     evt.preventDefault();
     this._handleDeleteCard(this._card);
-    console.log(this._card);
-    this.close()
+    //this.close()
   }
 
   setEventListeners() {
     super.setEventListeners();
-    console.log(this._buttonPopupDeleteCard);
+  //  console.log(this._buttonPopupDeleteCard);
     this._buttonPopupDeleteCard.addEventListener('click', this._submitFormDelete);
 }
 

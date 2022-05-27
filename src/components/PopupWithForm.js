@@ -21,7 +21,6 @@ export default class PopupWithForm extends Popup {
   _submitForm = (evt) => {
     evt.preventDefault();
     this._handleFormSubmit(this._getInputValues());
-    this.close();
   }
 
   // добавляет обработчик клика иконке закрытия и добавляет обработчик сабмита формы
@@ -31,13 +30,13 @@ export default class PopupWithForm extends Popup {
   }
 
   // при закрытии попапа форма должна сбрасываться
-  close() {
+  close () {
     super.close();
     this._form.reset();
   }
 
   //добавляем отображение ожидания загрузки данных
-  loadingProcess(isLoad) {
+  renderLoading(isLoad) {
     if (isLoad) {
       this._button.innerText = 'Сохранение ...';
     } else {
