@@ -94,7 +94,6 @@ avatarUserPopup.setEventListeners();
 function openPopupEditAvatar() {
   validationPopupAvatar.resetValidation();
   avatarUserPopup.open();
-  validationPopupAvatar.toggleButtonState();
 }
 
 // Устанавливаем слушатель на иконку редактирования аватара
@@ -125,7 +124,7 @@ Promise.all([api.getUserInfo(), api.getAllCards()]).then(([ objUser, objCardList
   const cardListItems = new Section ({
     renderer: (items) => {
       items.forEach((item) => {
-        gallery.append(createCard(item));
+       cardListItems.appendItem(createCard(item));
       })
     }
   }, '.gallery__items');
@@ -184,7 +183,6 @@ function createCard(data) {
      .then(result => {
       cardListItems.addItem(createCard(result));
       addPopup.close();
-      validationPopupAdd.toggleButtonState();
      })
      .catch((err) => {
        console.log(err);
@@ -200,6 +198,9 @@ function createCard(data) {
     validationPopupAdd.resetValidation();
     addPopup.open();
   })
+})
+.catch((err) => {
+  console.log(err);
 })
 
 /// Инициируем попап удаления карточки

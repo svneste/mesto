@@ -53,7 +53,7 @@ export default class Card {
 
   _setEventListener() {
     this._likeButton.addEventListener('click', () => {
-      this._toggleLike();
+      this._handleLikeCard();
     })
 
     this._cardImage.addEventListener('click', () => {
@@ -67,7 +67,7 @@ export default class Card {
 
     _toggleLike() {
       this._likeButton.classList.toggle('gallery__like-button-active');
-      this._handleLikeCard();
+
     }
 
     removeCard = () => {
@@ -77,7 +77,9 @@ export default class Card {
 
     setLikes(countLikes) {
       this._like = countLikes;
+      this._toggleLike();
       this._placeLike.textContent = this._like;
+
     }
 
     likeStatus() {
